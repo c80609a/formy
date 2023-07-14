@@ -1,0 +1,40 @@
+.grid-x
+  .cell
+    h2 = title("Edit #{current_user.full_name}")
+
+= simple_form_for resource,
+  as: resource_name,
+  url: registration_path(resource_name),
+  html: { method: :put } do |f|
+  .grid-x
+    .cell.medium-5
+      .form-inputs
+        = f.input :full_name, required: true, autofocus: true
+        = f.input :email, required: true
+        = f.input :password,
+            autocomplete: "off",
+            required: false
+        = f.input :password_confirmation,
+            required: false
+      .form-actions
+          = f.button :submit, "Update"
+
+    .cell.medium-5.medium-offset-1
+      .form-inputs
+        - if resource.avatar
+          = image_tag resource.avatar_url
+
+          = f.input :remove_avatar, as: :boolean
+
+        = f.hidden_field :avatar, value: resource.cached_avatar_data
+        = f.input :avatar
+
+      h6
+        b Cancel my account
+      p
+        | Unhappy?
+        '
+        = link_to "Cancel my account.",
+            registration_path(resource_name),
+            data: { confirm: "Are you sure?" },
+            method: :delete
