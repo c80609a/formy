@@ -16,10 +16,14 @@ fi
 gem install bundler --conservative
 
 # Set up Ruby dependencies via Bundler into .bundle folder
-rm -f .bundle/config
-
-bundle check --path .bundle > /dev/null 2>&1 ||
-  bundle install --path=.bundle $BUNDLER_ARGS
+if [ "$CI" ]
+then
+    rm -f .bundle/config
+    bundle check --path .bundle > /dev/null 2>&1 ||
+      bundle install --path=.bundle $BUNDLER_ARGS
+else
+    bundle install
+fi
 
 # Install yarn globally in current Nodejs installation
 npm install -g yarn

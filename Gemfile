@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.7.2"
+ruby "2.7.3"
 
 gem "pg"
 
@@ -34,6 +34,7 @@ gem "draper"
 gem "flamegraph"
 gem "google-analytics-rails"
 gem "health_check"
+gem "httparty"
 gem "interactor"
 gem "kaminari"
 gem "memory_profiler"
@@ -61,8 +62,9 @@ group :test do
   gem "capybara-email"
   gem "database_cleaner"
   gem "formulaic"
-  gem "guard-rspec"
+  gem "guard-rspec", "4.7.3"
   gem "launchy"
+  gem "pry", "~> 0.14.2"
   gem "rspec-its"
   gem "selenium-webdriver"
   gem "shoulda-matchers"
