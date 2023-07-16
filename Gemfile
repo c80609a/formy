@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "2.7.1"
+ruby "2.7.2"
 
 gem "pg"
 
@@ -37,6 +37,10 @@ gem "health_check"
 gem "interactor"
 gem "kaminari"
 gem "memory_profiler"
+gem "net-http", require: false
+gem "net-imap", require: false
+gem "net-protocol", require: false
+gem "net-smtp", require: false
 gem "puma"
 gem "rack-canonical-host"
 gem "rack-cors"
