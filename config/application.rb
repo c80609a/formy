@@ -39,5 +39,14 @@ module RailsBase
 
     # Add HOST to allowed list
     config.hosts << ENV.fetch("HOST")
+
+    load_paths = [
+      %w[lib]
+    ].map do |p|
+      Rails.root.join(*p)
+    end
+
+    config.autoload_paths += load_paths
+    config.eager_load_paths += load_paths
   end
 end
