@@ -3,12 +3,12 @@
 class ServiceObject
   attr_reader :error_text
 
-  def initialize
+  def initialize(*_args)
     @success = true
     @error_text = nil
   end
 
-  def call(*_args)
+  def call
     begin
       process
     rescue StandardError, NotImplementedError => e

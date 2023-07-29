@@ -2,6 +2,9 @@ require "rails_helper"
 
 module ServiceObjectSpec
   class DummyClass < ServiceObject
+    def initialize(arg1)
+      @arg1 = arg1
+    end
   end
 
   class DummyClass2 < ServiceObject
@@ -22,7 +25,7 @@ end
 
 describe ServiceObject do
   it "raises error" do
-    service = ServiceObjectSpec::DummyClass.new.call
+    service = ServiceObjectSpec::DummyClass.new("hello").call
     expect([service.error_text, service.success?]).to eq ["[ServiceObjectSpec::DummyClass] NotImplementedError", false]
   end
 
