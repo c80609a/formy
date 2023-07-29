@@ -4,4 +4,5 @@ class Account < ApplicationRecord
   belongs_to :user
   has_many :forms, dependent: :destroy
   has_many :integrations, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 end

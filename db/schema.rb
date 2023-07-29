@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_29_120956) do
+ActiveRecord::Schema.define(version: 2023_07_29_124101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 2023_07_29_120956) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_integrations_on_account_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "account_id", null: false
+    t.bigint "form_id", null: false
+    t.text "body"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["account_id"], name: "index_notifications_on_account_id"
+    t.index ["form_id"], name: "index_notifications_on_form_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -72,4 +82,6 @@ ActiveRecord::Schema.define(version: 2023_07_29_120956) do
   add_foreign_key "accounts", "users"
   add_foreign_key "forms", "accounts"
   add_foreign_key "integrations", "accounts"
+  add_foreign_key "notifications", "accounts"
+  add_foreign_key "notifications", "forms"
 end
